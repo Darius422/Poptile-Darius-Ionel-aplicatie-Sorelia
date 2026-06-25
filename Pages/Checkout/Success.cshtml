@@ -1,0 +1,46 @@
+﻿@page "{id:int}"
+@model BeautyHealthStore.Pages.Checkout.SuccessModel
+
+@{
+    ViewData["Title"] = "Comandă plasată";
+}
+
+<div class="alert alert-success">
+    <h2>Comanda a fost plasată cu succes!</h2>
+    <p>Mulțumim pentru comanda efectuată pe Sorelia.</p>
+</div>
+
+<h4>Detalii comandă</h4>
+
+<p><strong>Număr comandă:</strong> @Model.Order.Id</p>
+<p><strong>Nume client:</strong> @Model.Order.CustomerName</p>
+<p><strong>Email:</strong> @Model.Order.CustomerEmail</p>
+<p><strong>Adresă livrare:</strong> @Model.Order.Address</p>
+<p><strong>Status:</strong> @Model.Order.Status</p>
+<p><strong>Total:</strong> @Model.Order.TotalPrice lei</p>
+
+<h4>Produse comandate</h4>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Produs</th>
+            <th>Cantitate</th>
+            <th>Preț</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Order.OrderItems)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price lei</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="/Products/Index" class="btn btn-primary">
+    Continuă cumpărăturile
+</a>

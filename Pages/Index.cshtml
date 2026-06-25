@@ -1,0 +1,75 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Acasă";
+}
+
+<section class="sorelia-hero-banner">
+    <div class="hero-text">
+        <h1>Sorelia</h1>
+        <h4>Frumusețe și sănătate într-un singur loc</h4>
+        <p>
+            Descoperă produse atent selectate pentru îngrijire, stare de bine
+            și un stil de viață echilibrat.
+        </p>
+
+        <a asp-page="/Products/Index" class="btn sorelia-btn">
+            Descoperă produsele
+        </a>
+    </div>
+</section>
+
+<div class="row mt-4">
+    <div class="col-md-6 mb-4">
+        <div class="sorelia-category-card">
+            <div class="category-icon">🌸</div>
+            <div>
+                <h3>Înfrumusețare</h3>
+                <p>Produse pentru față, corp și păr, potrivite pentru rutina zilnică de îngrijire.</p>
+                <a asp-page="/Products/Index" asp-route-section="Infrumusetare" class="btn btn-outline-danger">
+                    Explorează
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <div class="sorelia-category-card">
+            <div class="category-icon green">🌿</div>
+            <div>
+                <h3>Sănătate</h3>
+                <p>Produse naturiste și articole dedicate stării de bine și echilibrului personal.</p>
+                <a asp-page="/Products/Index" asp-route-section="Sanatate" class="btn btn-outline-success">
+                    Explorează
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-4 mb-3">
+        <div class="sorelia-info-card">
+            <div class="info-icon">🍃</div>
+            <h5>Ingrediente atent selectate</h5>
+            <p>Alegem cu grijă produse sigure și eficiente pentru tine.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="sorelia-info-card">
+            <div class="info-icon">🚚</div>
+            <h5>Comandă rapidă</h5>
+            <p>Coș, checkout și confirmare prin email.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="sorelia-info-card">
+            <div class="info-icon">💎</div>
+            <h5>Produse de calitate</h5>
+            <p>Produse dedicate îngrijirii și stării de bine.</p>
+        </div>
+    </div>
+</div>

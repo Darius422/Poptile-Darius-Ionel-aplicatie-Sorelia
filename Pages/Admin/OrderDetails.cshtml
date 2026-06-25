@@ -1,0 +1,63 @@
+﻿@page "{id:int}"
+@model BeautyHealthStore.Pages.Admin.OrderDetailsModel
+
+@{
+    ViewData["Title"] = "Detalii comandă";
+}
+
+<h1>Detalii comandă #@Model.Order.Id</h1>
+
+<p><strong>Client:</strong> @Model.Order.CustomerName</p>
+<p><strong>Email:</strong> @Model.Order.CustomerEmail</p>
+<p><strong>Adresă:</strong> @Model.Order.Address</p>
+<p><strong>Status:</strong> @Model.Order.Status</p>
+<p><strong>Total:</strong> @Model.Order.TotalPrice lei</p>
+
+<hr />
+
+<h4>Actualizare status comandă</h4>
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Status</label>
+
+        <select asp-for="NewStatus" class="form-select">
+            <option value="Plasată">Plasată</option>
+            <option value="În procesare">În procesare</option>
+            <option value="Expediată">Expediată</option>
+            <option value="Livrată">Livrată</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Salvează status
+    </button>
+</form>
+
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Produs</th>
+            <th>Cantitate</th>
+            <th>Preț</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Order.OrderItems)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price lei</td>
+                <td>@(item.Price* item.Quantity) lei</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="./Orders" class="btn btn-secondary">
+    Înapoi la comenzi
+</a>

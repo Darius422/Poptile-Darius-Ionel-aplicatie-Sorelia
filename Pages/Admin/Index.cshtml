@@ -1,0 +1,100 @@
+﻿@page
+@model BeautyHealthStore.Pages.Admin.IndexModel
+
+@{
+    ViewData["Title"] = "Administrare produse";
+}
+
+<h1>Dashboard Administrator</h1>
+
+<div class="row mb-4">
+
+    <div class="col-md-3">
+        <div class="card text-center border-primary">
+            <div class="card-body">
+                <h5 class="card-title">📦 Produse</h5>
+                <h2>@Model.ProductCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center border-success">
+            <div class="card-body">
+                <h5 class="card-title">🛒 Comenzi</h5>
+                <h2>@Model.OrderCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center border-warning">
+            <div class="card-body">
+                <h5 class="card-title">👥 Utilizatori</h5>
+                <h2>@Model.UserCount</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-center border-danger">
+            <div class="card-body">
+                <h5 class="card-title">💰 Vânzări</h5>
+                <h2>@Model.TotalSales lei</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<h2>Administrare produse</h2>
+
+<p>
+    <a class="btn btn-primary" asp-page="./Create">
+        Adaugă produs nou
+    </a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nume</th>
+            <th>Categorie</th>
+            <th>Secțiune</th>
+            <th>Preț</th>
+            <th>Stoc</th>
+            <th>Produs nou</th>
+            <th>Cel mai cumpărat</th>
+            <th>Acțiuni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Category?.Name</td>
+                <td>@product.Section</td>
+                <td>@product.Price lei</td>
+                <td>@product.Stock</td>
+                <td>@(product.IsNew ? "Da" : "Nu")</td>
+                <td>@(product.IsBestSeller ? "Da" : "Nu")</td>
+                <td>
+                    <a class="btn btn-sm btn-warning"
+                       asp-page="./Edit"
+                       asp-route-id="@product.Id">
+                        Editează
+                    </a>
+
+                    <a class="btn btn-sm btn-danger"
+                       asp-page="./Delete"
+                       asp-route-id="@product.Id">
+                        Șterge
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,188 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+body {
+    background: linear-gradient( 180deg, #fff7f9 0%, #fdf3f6 50%, #f8eef2 100% );
+}
+
+.btn-dark {
+    background-color: #d88ca0;
+    border-color: #d88ca0;
+}
+
+    .btn-dark:hover {
+        background-color: #c9758d;
+        border-color: #c9758d;
+    }
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.08) !important;
+    }
+
+.navbar-brand {
+    font-size: 1.35rem;
+}
+
+.footer {
+    background-color: #f8e9ed;
+}
+.sorelia-hero {
+    background: linear-gradient(135deg, #fde8ee, #fff7f9);
+    border-radius: 22px;
+    padding: 60px;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 25px rgba(201, 117, 141, 0.15);
+}
+
+    .sorelia-hero h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        color: #2d2d2d;
+    }
+
+    .sorelia-hero h4 {
+        color: #c9758d;
+        margin-bottom: 20px;
+    }
+
+    .sorelia-hero p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+.sorelia-btn {
+    background-color: #d88ca0;
+    color: white;
+    border-radius: 8px;
+    padding: 12px 26px;
+    font-weight: 600;
+}
+
+    .sorelia-btn:hover {
+        background-color: #c9758d;
+        color: white;
+    }
+
+.hero-product-box {
+    background: white;
+    border-radius: 18px;
+    padding: 35px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.hero-product {
+    font-size: 5rem;
+}
+
+.sorelia-category-card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fde8ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+    .category-icon.green {
+        background-color: #eef5ec;
+    }
+
+.sorelia-info-card {
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    height: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.info-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.hero-banner-image {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 20px;
+}
+.sorelia-hero-banner {
+    background-image: url('/images/sorelia-banner.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-color: #fde8ee;
+    min-height: 580px;
+    border-radius: 22px;
+    padding: 70px;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 25px rgba(201, 117, 141, 0.18);
+    display: flex;
+    align-items: center;
+}
+
+.hero-text {
+    max-width: 520px;
+}
+
+    .hero-text h1 {
+        font-size: 4rem;
+        font-weight: 800;
+        color: #2d2d2d;
+    }
+
+    .hero-text h4 {
+        color: #c9758d;
+        margin-bottom: 20px;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+.footer {
+    background-color: #f8e9ed;
+    color: #2d2d2d;
+}

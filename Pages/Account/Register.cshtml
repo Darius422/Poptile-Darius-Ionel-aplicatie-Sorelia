@@ -1,0 +1,31 @@
+﻿@page
+@model BeautyHealthStore.Pages.Account.RegisterModel
+
+@{
+    ViewData["Title"] = "Înregistrare";
+}
+
+<h1>Înregistrare cont</h1>
+
+<form method="post" class="col-md-5">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input asp-for="Input.Email" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Parolă</label>
+        <input asp-for="Input.Password" type="password" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Confirmă parola</label>
+        <input asp-for="Input.ConfirmPassword" type="password" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Creează cont
+    </button>
+</form>

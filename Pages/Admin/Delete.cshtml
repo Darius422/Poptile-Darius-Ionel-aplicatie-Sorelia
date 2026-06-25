@@ -1,0 +1,43 @@
+﻿@page "{id:int}"
+@model BeautyHealthStore.Pages.Admin.DeleteModel
+
+@{
+    ViewData["Title"] = "Ștergere produs";
+}
+
+<h1>Ștergere produs</h1>
+@if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+<div class="alert alert-danger">
+    Sigur dorești să ștergi acest produs?
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Nume</dt>
+    <dd class="col-sm-9">@Model.Product.Name</dd>
+
+    <dt class="col-sm-3">Categorie</dt>
+    <dd class="col-sm-9">@Model.Product.Category?.Name</dd>
+
+    <dt class="col-sm-3">Preț</dt>
+    <dd class="col-sm-9">@Model.Product.Price lei</dd>
+
+    <dt class="col-sm-3">Stoc</dt>
+    <dd class="col-sm-9">@Model.Product.Stock</dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="Product.Id" />
+
+    <button type="submit" class="btn btn-danger">
+        Șterge definitiv
+    </button>
+
+    <a asp-page="./Index" class="btn btn-secondary">
+        Anulează
+    </a>
+</form>

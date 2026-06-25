@@ -1,0 +1,48 @@
+﻿@page
+@model BeautyHealthStore.Pages.Account.ProfileModel
+
+@{
+    ViewData["Title"] = "Contul meu";
+}
+
+<h1>Contul meu</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <p><strong>Email:</strong> @Model.CurrentUser?.Email</p>
+        <p><strong>Rol:</strong> @(Model.Roles.Any() ? string.Join(", ", Model.Roles) : "User")</p>
+    </div>
+</div>
+
+<h3>Istoric comenzi</h3>
+
+@if (!Model.Orders.Any())
+{
+    <div class="alert alert-info">
+        Nu ai comenzi plasate momentan.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Comandă</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>#@order.Id</td>
+                    <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>@order.Status</td>
+                    <td>@order.TotalPrice lei</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

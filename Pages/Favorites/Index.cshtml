@@ -1,0 +1,47 @@
+﻿@page
+@model BeautyHealthStore.Pages.Favorites.IndexModel
+
+@{
+    ViewData["Title"] = "Favorite";
+}
+
+<h1>Produse favorite</h1>
+
+@if (!Model.FavoriteItems.Any())
+{
+    <div class="alert alert-info">
+        Nu ai produse favorite momentan.
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var item in Model.FavoriteItems)
+        {
+            if (item.Product != null)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="@item.Product.ImageUrl"
+                             class="card-img-top"
+                             alt="@item.Product.Name"
+                             style="height: 220px; object-fit: cover;" />
+
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Product.Name</h5>
+                            <p>@item.Product.Description</p>
+                            <p><strong>@item.Product.Price lei</strong></p>
+                            <p class="text-muted">@item.Product.Category?.Name</p>
+
+                            <a class="btn btn-primary"
+                               asp-page="/Products/Details"
+                               asp-route-id="@item.Product.Id">
+                                Detalii
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}

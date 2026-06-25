@@ -1,0 +1,45 @@
+﻿@page
+@model BeautyHealthStore.Pages.Products.IndexModel
+
+@{
+    ViewData["Title"] = "Produse";
+}
+
+<h1 class="mb-4">Produsele Sorelia</h1>
+
+<div class="row">
+    @foreach (var product in Model.Products)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card h-100">
+                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 220px; object-fit: cover;">
+
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p><strong>@product.Price lei</strong></p>
+                    <p class="text-muted">@product.Category?.Name</p>
+
+                    @if (product.Stock > 5)
+                    {
+                        <p class="text-success">În stoc: @product.Stock buc.</p>
+                    }
+                    else if (product.Stock > 0)
+                    {
+                        <p class="text-warning">Stoc limitat: @product.Stock buc.</p>
+                    }
+                    else
+                    {
+                        <p class="text-danger">Stoc epuizat</p>
+                    }
+
+                    <a class="btn btn-primary"
+                       asp-page="./Details"
+                       asp-route-id="@product.Id">
+                        Detalii
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

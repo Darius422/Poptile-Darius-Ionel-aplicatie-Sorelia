@@ -1,0 +1,62 @@
+﻿@page
+@model BeautyHealthStore.Pages.Cart.IndexModel
+@{
+    ViewData["Title"] = "Coș";
+}
+<h1>Coșul de cumpărături</h1>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+@if (!Model.CartItems.Any())
+{
+    <div class="alert alert-info">
+        Coșul este gol momentan.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Produs</th>
+                <th>Preț</th>
+                <th>Cantitate</th>
+                <th>Total produs</th>
+                <th>Acțiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.Product?.Name</td>
+                    <td>@item.Product?.Price lei</td>
+                    <td>
+                        <a asp-page="/Cart/UpdateQuantity"
+                           asp-route-id="@item.Id"
+                           asp-route-quantity="@(item.Quantity - 1)"
+                           class="btn btn-sm btn-outline-secondary">−</a>
+                        @item.Quantity
+                        <a asp-page="/Cart/UpdateQuantity"
+                           asp-route-id="@item.Id"
+                           asp-route-quantity="@(item.Quantity + 1)"
+                           class="btn btn-sm btn-outline-secondary">+</a>
+                    </td>
+                    <td>@((item.Product?.Price ?? 0) * item.Quantity) lei</td>
+                    <td>
+                        <a asp-page="/Cart/Remove"
+                           asp-route-id="@item.Id"
+                           class="btn btn-sm btn-danger">Elimină</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h3>Total comandă: @Model.Total lei</h3>
+    <a asp-page="/Checkout/Index" class="btn btn-success">
+        Plasează comanda
+    </a>
+}

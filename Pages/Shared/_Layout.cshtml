@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sorelia</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Sorelia.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom shadow-sm mb-4" style="background-color: #f8e9ed;">
+            <div class="container py-2">
+                <a class="navbar-brand fw-bold" asp-page="/Index" style="letter-spacing: 2px; color: #c9758d;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Index">Acasă</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/About">
+                                Despre noi
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Contact">
+                                Contact
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Products/Index">Toate produsele</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">
+                                Înfrumusețare
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/Products/Index" asp-route-section="Infrumusetare">Toate produsele</a></li>
+                                <li><a class="dropdown-item" asp-page="/Products/Index" asp-route-category="Produse pentru fata">Produse pentru față</a></li>
+                                <li><a class="dropdown-item" asp-page="/Products/Index" asp-route-category="Produse pentru corp">Produse pentru corp</a></li>
+                                <li><a class="dropdown-item" asp-page="/Products/Index" asp-route-category="Produse pentru par">Produse pentru păr</a></li>
+                                <li><a class="dropdown-item" asp-page="/Products/Index" asp-route-newProducts="true">Produse noi în magazin</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">
+                                Sănătate
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-page="/Products/Index" asp-route-section="Sanatate">Toate produsele</a></li>
+                                <li><a class="dropdown-item" asp-page="/Products/Index" asp-route-section="Sanatate" asp-route-bestSeller="true">Cele mai cumpărate</a></li>
+                                <li><a class="dropdown-item" asp-page="/Products/Index" asp-route-category="Produse naturiste">Produse naturiste</a></li>
+                            </ul>
+                        </li>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Admin/Index">Administrare</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Admin/Orders">Comenzi</a>
+                            </li>
+                        }
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Favorites/Index">Favorite</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-page="/Cart/Index">Coș</a>
+                        </li>
+
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown">
+                                    Salut, @User.Identity.Name
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" asp-page="/Account/Profile">
+                                            Contul meu
+                                        </a>
+                                    </li>
+
+                                    <li><hr class="dropdown-divider"></li>
+
+                                    <li>
+                                        <a class="dropdown-item" asp-page="/Account/Logout">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Account/Login">
+                                    Login
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Account/Register">
+                                    Register
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer mt-5 py-4">
+        <div class="container text-center">
+            <h5 class="fw-bold mb-2">Sorelia</h5>
+
+            <p class="mb-1">
+                Frumusețe • Sănătate • Wellness
+            </p>
+
+            <p class="mb-1">
+                📧 contact@sorelia.ro | 📞 0740 123 456
+            </p>
+
+            <small>
+                © 2026 Sorelia. Toate drepturile rezervate.
+            </small>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

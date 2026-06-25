@@ -1,0 +1,51 @@
+﻿@page
+@model BeautyHealthStore.Pages.Admin.OrdersModel
+
+@{
+    ViewData["Title"] = "Comenzi";
+}
+
+<h1>Comenzi plasate</h1>
+
+@if (!Model.Orders.Any())
+{
+    <div class="alert alert-info">
+        Nu există comenzi plasate.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Client</th>
+                <th>Email</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Detalii</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.OrderDate.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>@order.CustomerName</td>
+                    <td>@order.CustomerEmail</td>
+                    <td>@order.TotalPrice lei</td>
+                    <td>@order.Status</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary"
+                           asp-page="./OrderDetails"
+                           asp-route-id="@order.Id">
+                            Vezi
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,64 @@
+﻿@page "{id:int}"
+@model BeautyHealthStore.Pages.Products.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalii produs";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <img src="@Model.Product.ImageUrl"
+             alt="@Model.Product.Name"
+             class="img-fluid rounded border"
+             style="max-height: 400px; object-fit: cover;" />
+    </div>
+
+    <div class="col-md-7">
+        <h1>@Model.Product.Name</h1>
+
+        <p class="text-muted">
+            @Model.Product.Category?.Name | @Model.Product.Section
+        </p>
+
+        <h3 class="text-primary">@Model.Product.Price lei</h3>
+
+        <p class="mt-4">@Model.Product.Description</p>
+
+        <p>
+            <strong>Stoc disponibil:</strong> @Model.Product.Stock bucăți
+        </p>
+
+        @if (Model.Product.IsNew)
+        {
+            <span class="badge bg-success">Produs nou</span>
+        }
+
+        @if (Model.Product.IsBestSeller)
+        {
+            <span class="badge bg-warning text-dark">Cel mai cumpărat</span>
+        }
+
+        <div class="mt-4">
+            @if (Model.Product.Stock > 0)
+            {
+                <a asp-page="/Cart/Add"
+                   asp-route-id="@Model.Product.Id"
+                   class="btn btn-primary">
+                    Adaugă în coș
+                </a>
+            }
+            else
+            {
+                <button class="btn btn-secondary" disabled>
+                    Stoc epuizat
+                </button>
+            }
+            <a asp-page="/Favorites/Add"
+               asp-route-id="@Model.Product.Id"
+               class="btn btn-outline-danger">
+                Adaugă la favorite
+
+            </a>            <a asp-page="./Index" class="btn btn-secondary">Înapoi la produse</a>
+        </div>
+    </div>
+</div>

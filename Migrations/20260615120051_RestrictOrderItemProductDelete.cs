@@ -1,0 +1,53 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace BeautyHealthStore.Migrations
+{
+    /// <inheritdoc />
+    public partial class RestrictOrderItemProductDelete : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_OrderItems_Products_ProductId",
+                table: "OrderItems");
+
+            migrationBuilder.AddColumn<string>(
+                name: "ProductName",
+                table: "OrderItems",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: "");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_OrderItems_Products_ProductId",
+                table: "OrderItems",
+                column: "ProductId",
+                principalTable: "Products",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_OrderItems_Products_ProductId",
+                table: "OrderItems");
+
+            migrationBuilder.DropColumn(
+                name: "ProductName",
+                table: "OrderItems");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_OrderItems_Products_ProductId",
+                table: "OrderItems",
+                column: "ProductId",
+                principalTable: "Products",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+        }
+    }
+}
